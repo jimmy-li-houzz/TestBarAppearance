@@ -196,30 +196,3 @@ private class PresentedViewController: UIViewController {
         presentingViewController?.dismiss(animated: true)
     }
 }
-
-extension UIImage {
-    func tintedImage(with tintColor: UIColor) -> UIImage? {
-//        - (UIImage *) tintedImageWithColor:(UIColor *)tintColor {
-//            UIGraphicsBeginImageContextWithOptions(self.size, NO, 0.0f);
-//            [tintColor setFill];
-//            CGRect bounds = CGRectMake(0, 0, self.size.width, self.size.height);
-//            UIRectFill(bounds);
-//            [self drawInRect:bounds blendMode:kCGBlendModeDestinationIn alpha:1.0f];
-//
-//            UIImage *tintedImage = UIGraphicsGetImageFromCurrentImageContext();
-//            UIGraphicsEndImageContext();
-//
-//            return tintedImage;
-//        }
-
-        UIGraphicsBeginImageContextWithOptions(self.size, false, 0)
-        tintColor.setFill()
-        let bounds = CGRect(origin: .zero, size: self.size)
-        UIRectFill(bounds)
-        self.draw(in: bounds, blendMode: CGBlendMode.destinationIn, alpha: 1)
-        let tintedImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-
-        return tintedImage
-    }
-}
